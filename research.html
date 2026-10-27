@@ -1,0 +1,124 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>Research and IP | RF-TraceGuard</title><meta name="description" content="Patent status of RF-TraceGuard, the scope of the provisional application, the implemented software and the work ahead."><style>
+:root{--paper:#f5f5f1;--ink:#202626;--text:#3d4942;--muted:#626e65;--line:#b6c0b6;--accent:#227b3c;--signal:#26A54F;--light:#eaf0e8;--soft:#eef1eb}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.56 Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}a:hover{text-decoration:underline;text-underline-offset:4px}a:focus-visible{outline:2px solid var(--signal);outline-offset:4px}p{margin:0 0 1em}svg{display:block;max-width:100%}::selection{background:#bfeabf}
+.frame{max-width:1400px;padding:0 60px;margin:0 auto}
+header{border-bottom:1px solid #a7b0a6;background:var(--paper);position:sticky;top:0;z-index:5}.header-content{min-height:80px;display:flex;align-items:center;gap:30px;justify-content:space-between}.brand{font-size:21px;letter-spacing:-.045em;font-weight:700;display:flex;align-items:center;gap:12px;white-space:nowrap}.symbol{display:grid;place-items:center;width:30px;height:30px;border:1px solid #242c27}.symbol svg{width:24px;height:24px}.nav a:hover{color:var(--accent)}.header-right{font-size:11px;color:var(--muted);white-space:nowrap}
+.section-marker,.eyebrow,.smallcaps{font-size:11px;letter-spacing:.105em;text-transform:uppercase}.eyebrow{font-weight:700;color:var(--accent)}.section-marker{color:var(--accent)}.smallcaps{color:var(--accent);font-weight:700}
+.topline{display:flex;justify-content:space-between;gap:25px;padding-top:29px;color:var(--muted);font-size:11px;letter-spacing:.07em;text-transform:uppercase}.topline a{color:var(--accent)}
+.hero{padding-top:62px;padding-bottom:70px}.hero-left{max-width:1030px}.hero h1{font-size:clamp(46px,5vw,72px);font-weight:500;line-height:1.04;letter-spacing:-.058em;margin:19px 0 29px;max-width:980px}.lead{font-size:19px;line-height:1.72;color:var(--text);max-width:860px;margin:0 0 22px}.hero-detail{font-size:15px;line-height:1.8;color:#506054;max-width:850px}
+.notice{border-block:1px solid #a6b0a5;display:grid;grid-template-columns:165px minmax(0,1fr);gap:32px;padding-block:21px}.notice .mark{font-size:11px;letter-spacing:.10em;color:var(--accent);text-transform:uppercase;padding-top:4px}.notice p{font-size:15px;line-height:1.7;color:#3f5145;margin:0;max-width:900px}
+.section{padding-top:92px}.section-grid{display:grid;grid-template-columns:220px minmax(0,1fr);gap:46px;border-top:1px solid #9ba69a;padding-top:23px}
+h2{font-size:clamp(32px,3.4vw,45px);font-weight:500;letter-spacing:-.045em;line-height:1.14;margin:0 0 24px}h3{font-size:19px;font-weight:600;letter-spacing:-.02em;margin:0 0 8px;line-height:1.35}
+.body-copy{font-size:15.5px;line-height:1.78;color:#46544a;max-width:800px}.body-copy p{margin:0 0 17px}
+.rule-rows{border-top:1px solid var(--line);margin-top:28px}.rule-row{border-bottom:1px solid var(--line);padding:24px 0;display:grid;grid-template-columns:55px minmax(170px,260px) minmax(0,1fr);gap:22px}.rule-row .no{font-size:12px;color:var(--accent);padding-top:4px}.rule-row h3{font-size:17px;margin:0}.rule-row p{font-size:14px;line-height:1.75;color:#49594c;margin:0;max-width:680px}
+.spec{border-top:1px solid var(--line);margin:26px 0 8px;max-width:860px}.spec-row{display:grid;grid-template-columns:240px minmax(0,1fr);gap:20px;padding:12px 0;border-bottom:1px solid #c8d0c5;font-size:14px;line-height:1.6}.spec-row span:first-child{color:var(--muted)}.spec-row span:last-child{color:#2c3830}
+.dataarea{margin-top:96px;padding:72px 0 78px;background:var(--soft);border-top:1px solid #c6cec3;border-bottom:1px solid #c6cec3}.dataarea .section-grid{border-top-color:#aeb8ac}
+.data-figure{background:#fafbf8;border:1px solid #c4cec4;padding:24px;margin:28px 0 0;max-width:960px}.data-chart{width:100%;height:auto}.legend{display:flex;gap:19px;flex-wrap:wrap;font-size:12px;color:#536057;margin-top:10px}.legend .dot{width:15px;height:3px;display:inline-block;margin-right:6px;vertical-align:middle}.data-caption{font-size:12px;line-height:1.7;color:#58665b;max-width:930px;margin:14px 0 30px}.swipe-hint{display:none;font-size:11px;color:var(--muted);margin:8px 0 0}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;border-top:1px solid #c2c9bf;margin-top:30px;padding-top:22px;max-width:960px}.stats strong{display:block;font-size:30px;font-weight:500;letter-spacing:-.04em;color:var(--ink);line-height:1.1}.stats p{font-size:13px;line-height:1.65;color:#526056;margin:9px 0 0}
+.tbl-wrap{max-width:100%;overflow-x:auto;margin:24px 0 8px;-webkit-overflow-scrolling:touch}table.tbl{border-collapse:collapse;width:100%;font-size:13.5px;line-height:1.5;min-width:560px}.tbl th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid #9ba69a;vertical-align:bottom}.tbl td{padding:11px 12px 11px 0;border-bottom:1px solid #cbd3c8;vertical-align:top;color:#33413a}.tbl td:first-child{color:var(--ink);font-weight:600}.tbl tr.ours td{background:#e6f2e3}.tbl tr.ours td:first-child{padding-left:10px;border-left:3px solid var(--signal)}.tbl .num{text-align:right;white-space:nowrap}.tbl th.num{text-align:right}
+.case-list{margin:26px 0 0;border-top:1px solid #aeb9ad}.case-item{display:grid;grid-template-columns:250px 1fr;gap:24px;border-bottom:1px solid #b9c4b8;padding:22px 0}.case-item strong{font-weight:600;font-size:16px;line-height:1.4}.case-item .sub{display:block;font-size:12px;color:var(--muted);font-weight:400;margin-top:5px}.case-item p{font-size:14px;color:#465348;line-height:1.75;margin:0 0 8px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:28px}.two-col>div{border-top:1px solid var(--line);padding-top:18px}.two-col ul{margin:12px 0 0;padding:0;list-style:none}.two-col li{font-size:14px;line-height:1.65;color:#465348;padding:9px 0;border-bottom:1px solid #d3dad0}
+.more-link{display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:var(--accent)}
+.nextrow{display:flex;justify-content:space-between;gap:35px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0;margin-top:40px;max-width:860px}.nextrow a{font-size:14px;color:var(--accent);font-weight:600}.nextrow span{font-size:12px;color:var(--muted)}
+.micro{font-size:11px;line-height:1.6;color:var(--muted)}
+footer{border-top:1px solid #aab4aa;padding:29px 0 55px;margin-top:96px}.footer-row{display:flex;justify-content:space-between;gap:24px;font-size:12px;color:var(--muted)}.footer-row strong{color:var(--ink)}
+@media(max-width:1150px){.frame{padding:0 34px}.section-grid{grid-template-columns:175px minmax(0,1fr);gap:30px}.rule-row{grid-template-columns:35px 200px 1fr;gap:17px}.case-item{grid-template-columns:200px 1fr}}
+@media(max-width:820px){.frame{padding:0 24px}.hero{padding-top:44px;padding-bottom:54px}.lead{font-size:17px}.notice{grid-template-columns:1fr;gap:10px}.section{padding-top:68px}.section-grid{grid-template-columns:minmax(0,1fr);gap:20px}.dataarea{margin-top:72px;padding:54px 0}.two-col{grid-template-columns:1fr;gap:28px}.case-item{grid-template-columns:1fr;gap:8px}.spec-row{grid-template-columns:1fr;gap:2px}}
+@media(max-width:570px){.brand{font-size:18px}.symbol{width:27px;height:27px}.topline{font-size:9px}.hero h1{font-size:42px}.rule-row{grid-template-columns:34px 1fr;gap:6px 12px}.rule-row h3,.rule-row p{grid-column:2}.stats{grid-template-columns:1fr;gap:18px}.data-figure{padding:6px}.data-figure .scroll-x{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.data-chart{min-width:820px}.swipe-hint{display:block}h2{font-size:32px}.nextrow{flex-direction:column;align-items:flex-start;gap:12px}.footer-row{flex-direction:column;gap:12px}}
+
+.off{color:#8a958c;font-size:15px}
+.tbl-note{font-size:12px;color:var(--muted);margin:8px 0 0}
+.quote{border-left:3px solid var(--signal);margin:2px 0 16px;padding:3px 0 3px 18px;font-size:17px;line-height:1.6;color:#26332b;max-width:700px}
+.quote cite{display:block;font-style:normal;font-size:12px;color:var(--muted);margin-top:8px}
+.list-plain{list-style:none;margin:0;padding:0}.list-plain li{font-size:14px;line-height:1.7;color:#465348;padding:0 0 10px}
+.list-plain li:last-child{padding-bottom:0}.list-plain em{font-style:normal;color:#26332b}
+
+.nav{display:flex;gap:24px;align-items:center;font-size:12px;font-weight:600}
+.nav a{white-space:nowrap;border-bottom:2px solid transparent;padding-bottom:5px}
+.nav a.active{border-bottom:2px solid var(--signal);padding-bottom:5px;text-decoration:none}
+.footer-row span:last-child{text-align:right}
+@media(max-width:1250px){.header-right{display:none}.nav{gap:17px}}
+@media(max-width:900px){.header-content{flex-wrap:wrap;min-height:0;padding-top:16px;gap:8px 20px}
+.nav{order:3;width:100%;overflow-x:auto;gap:22px;padding:4px 0 12px;font-size:12px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.nav::-webkit-scrollbar{display:none}.nav a{flex:0 0 auto;display:inline-block}
+.footer-row span:last-child{text-align:left}}
+</style></head><body><header id="top"><div class="frame header-content"><a aria-label="RF-TraceGuard home" class="brand" href="index.html"><span aria-hidden="true" class="symbol"><svg viewBox="0 0 28 28"><path d="M3 14H8L11 7L15 21L19 11L21 14H25" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>RF-TraceGuard</a><nav aria-label="Site navigation" class="nav"><a href="index.html">Home</a><a href="technology.html">Technology</a><a href="applications.html">Applications</a><a href="comparison.html">Comparison</a><a href="recognition.html">Recognition</a><a aria-current="page" class="active" href="research.html">Research &amp; IP</a><a href="about.html">About</a></nav><span class="header-right">Technical overview / 2026</span></div></header><main>
+<div class="frame topline"><span>Research &amp; IP / Patent status and development</span><a href="index.html">← Back to overview</a></div>
+<section class="frame hero" aria-labelledby="page-title"><div class="hero-left"><p class="eyebrow">Research &amp; IP</p>
+<h1 id="page-title">Patent status and development</h1>
+<p class="lead">A U.S. provisional patent application filed in October 2026 describes the method behind RF-TraceGuard. This page covers the scope of the application, the parts already working in software and the work still ahead.</p></div></section>
+
+<section class="frame section" id="patent"><div class="section-grid"><div class="section-marker">01 / Patent pending</div><div>
+<h2>U.S. provisional patent application</h2>
+<div class="spec">
+<div class="spec-row"><span>Title</span><span>Systems and Methods for Topology-Constrained Integrity Verification and Fault Localization in RF Automated Test Equipment</span></div>
+<div class="spec-row"><span>Application number</span><span>64/184,842</span></div>
+<div class="spec-row"><span>Type</span><span>Provisional application under 35 U.S.C. 111(b)</span></div>
+<div class="spec-row"><span>Received by the USPTO</span><span>26 October 2026</span></div>
+<div class="spec-row"><span>Inventor</span><span>Tatiana Krasik</span></div>
+</div>
+<div class="body-copy" style="margin-top:20px"><p>A provisional application secures a filing date for the method it discloses. Examination starts with a later nonprovisional application. The full specification is kept confidential for now.</p></div>
+</div></div></section>
+
+<section class="dataarea" id="method"><div class="frame"><div class="section-grid"><div class="section-marker">02 / Disclosed method</div><div>
+<h2>Main parts of the disclosed method</h2>
+<div class="body-copy"><p>The application treats a test station as a set of physical routes through known components. Its main parts are summarized below in plain terms.</p></div>
+<div class="rule-rows">
+<div class="rule-row"><span class="no">01</span><h3>Overlapping routes</h3><p>Controlled responses are taken through routes whose component sets are known and overlap by design. Components shared by the affected routes gain evidence, and components on unaffected routes lose it. The result is a single component, a group, a common-mode domain or an explicitly reported ambiguity.</p></div>
+<div class="rule-row"><span class="no">02</span><h3>Confirmed routes only</h3><p>A route is set up by command, and its response enters the analysis once an independent indication confirms that the commanded configuration is the one actually in place. Otherwise the response counts as indeterminate and leaves every candidate in place.</p></div>
+<div class="rule-row"><span class="no">03</span><h3>Sensitivity before exclusion</h3><p>A route that stayed normal clears a component only if a fault of the size in question in that component would have shown on it. Each exclusion records the fault size it covers.</p></div>
+<div class="rule-row"><span class="no">04</span><h3>Choosing the next route</h3><p>Routes available under current conditions are scored by how well they would separate the remaining candidates. The chosen route is set up, verified and measured, and the process repeats until a stopping condition is met.</p></div>
+<div class="rule-row"><span class="no">05</span><h3>Ambiguity reported as such</h3><p>Components with an identical signature across all available routes are reported together as one group. The route that would separate them is identified and, where possible, used.</p></div>
+<div class="rule-row"><span class="no">06</span><h3>Resolution known in advance</h3><p>The route set of a station is characterized at configuration, so the attainable diagnostic resolution is known before any incident occurs.</p></div>
+</div>
+<div class="body-copy" style="margin-top:26px"><p>The application also covers a validity assessment for each DUT measurement, with a guard band equal to the expanded uncertainty; separation of a product anomaly from a measurement-system anomaly by comparing DUT-dependent and DUT-independent responses; drift processing with a curvature check before a trend is extrapolated and with normalization for temperature; telling distributed degradation from a localized discontinuity by the shape of its frequency dependence; and advisory read-only operation in which the original result is kept.</p></div>
+</div></div></div></section>
+
+<section class="frame section" id="implemented"><div class="section-grid"><div class="section-marker">03 / Software and method</div><div>
+<h2>The software today</h2>
+<div class="body-copy"><p>The software used in the recorded applications corresponds to the reviewed software embodiment described in the application. It covers a defined part of the method, and the application itself keeps the disclosed method and the demonstrated program apart.</p></div>
+<div class="two-col">
+<div><span class="smallcaps">In the working software</span><ul>
+<li>Read-only operation on files the station already produces</li>
+<li>A model of each station: components, paths, reference values and uncertainty contributions</li>
+<li>Integrity class for each result: VALID, WARNING or REVIEW</li>
+<li>Baseline, EWMA, linear trend and a forecast of the time to a threshold</li>
+<li>Ranking of candidate components from affected paths, normal paths and reference deviations</li>
+<li>Incident record with timeline, evidence and affected results</li>
+</ul></div>
+<div><span class="smallcaps">Disclosed, planned for the software</span><ul>
+<li>Setting up measurement routes by command</li>
+<li>Confirming the established route before a response is used</li>
+<li>The sensitivity condition for clearing a component</li>
+<li>Ambiguity sets and the routes that separate them</li>
+<li>Adaptive choice of the next route</li>
+<li>A supervisory service for analysis across several stations</li>
+</ul></div>
+</div>
+</div></div></section>
+
+<section class="dataarea" id="timeline"><div class="frame"><div class="section-grid"><div class="section-marker">04 / Timeline</div><div>
+<h2>Timeline of the work</h2>
+<div class="case-list">
+<article class="case-item"><strong>April 2025</strong><div><p>Prototype presented at the hackathon “Best Innovations: Practice”, where it won its category. The technical description of that edition is dated 18 April 2025.</p></div></article>
+<article class="case-item"><strong>September 2025</strong><div><p>First production application, on an RF inspection station of an electronics manufacturer.</p></div></article>
+<article class="case-item"><strong>January and February 2026</strong><div><p>Application at a university research laboratory, on an electromechanical test bench.</p></div></article>
+<article class="case-item"><strong>July 2026</strong><div><p>Technical description version 4.6, brought into line with the program code.</p></div></article>
+<article class="case-item"><strong>August and September 2026</strong><div><p>Inter-station pilot in a microwave measurement laboratory. Structured prior-art search across patents, standards and commercial products.</p></div></article>
+<article class="case-item"><strong>September 2026</strong><div><p>Presentations at IIoT-2026, GCNSI-2026 and MTP 2026.</p></div></article>
+<article class="case-item"><strong>October 2026</strong><div><p>U.S. provisional patent application 64/184,842 filed.</p></div></article>
+</div>
+</div></div></div></section>
+
+<section class="frame section" id="next"><div class="section-grid"><div class="section-marker">05 / Open work</div><div>
+<h2>Work ahead</h2>
+<div class="rule-rows">
+<div class="rule-row"><span class="no">01</span><h3>Calibration on industrial data</h3><p>The EWMA and trend thresholds and the weights of the diagnostic score will be refined on a larger body of industrial data. Until then the score serves to order candidates for inspection.</p></div>
+<div class="rule-row"><span class="no">02</span><h3>Station configuration</h3><p>Station topology is currently defined in Python. Moving it to YAML or JSON files will let a new station be connected through configuration files alone.</p></div>
+<div class="rule-row"><span class="no">03</span><h3>Active components and VNA stations</h3><p>An independent reviewer proposed extensions for test lines that include active components such as power amplifiers, and for stations built around a vector network analyzer with temperature taken into account.</p></div>
+<div class="rule-row"><span class="no">04</span><h3>Routes and fleets</h3><p>Implementation of the route-based parts of the disclosed method, and analysis across several stations through a shared topology and baseline repository.</p></div>
+</div>
+<div class="body-copy" style="margin-top:26px"><p>Supporting documents, including the technical description (version 4.6, 5 July 2026), the prior-art landscape and statement of novelty, and the originality summary, are available to qualified reviewers on request.</p></div>
+<div class="nextrow"><span>Continue</span><a href="about.html">About the developer →</a></div>
+</div></div></section>
+</main><footer><div class="frame footer-row"><span><strong>RF-TraceGuard</strong> · RF measurement-path monitoring<br/>Developed by Dr. Tatiana Krasik</span><span>Patent pending · U.S. Provisional Application No. 64/184,842</span></div></footer></body></html>
